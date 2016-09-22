@@ -6,7 +6,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-
         String resultCM = TestCountMap();
         String resultCU = TestCollectionUtils();
 
@@ -18,52 +17,49 @@ public class Main {
 
     }
 
-    private static String TestCollectionUtils()
-    {
+    private static String TestCollectionUtils() {
 
-        List<Integer> dst = Arrays.asList(1,2,3);
+        List<Integer> dst = Arrays.asList(1, 2, 3);
         List<Number> src = CollectionUtils.newArrayList();
 
-        CollectionUtils.add(src,2);
-        if(src.size()<1){
-           return "Error: CollectionUtils.add(src,2)";
+        CollectionUtils.add(src, 2);
+        if (src.size() < 1) {
+            return "Error: CollectionUtils.add(src,2)";
         }
 
-        if(!CollectionUtils.containsAny(dst,src)){
+        if (!CollectionUtils.containsAny(dst, src)) {
             return "Error: CollectionUtils.containsAny(dst,src)";
         }
 
-        if(!CollectionUtils.containsAll(dst,src)){
+        if (!CollectionUtils.containsAll(dst, src)) {
             return "Error: CollectionUtils.containsAny(dst,src)";
         }
 
-        if(CollectionUtils.indexOf(dst,2)<0){
+        if (CollectionUtils.indexOf(dst, 2) < 0) {
             return "Error: CollectionUtils.indexOf(dst,2)";
         }
 
-        if(CollectionUtils.limit(dst,2).size()==2){
+        if (CollectionUtils.limit(dst, 2).size() == 2) {
             return "Error: CollectionUtils.indexOf(dst,2)";
         }
 
-        if(CollectionUtils.range(dst,1,3).get(0)!=2){
+        if (CollectionUtils.range(dst, 1, 3).get(0) != 2) {
             return "Error: CollectionUtils.range(dst,1,3)";
         }
 
         List<Integer> result = CollectionUtils.range(dst, 1, 3, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o1-o2;
+                return o1 - o2;
             }
         });
-        if(result.get(0)!=2)
-        {
+        if (result.get(0) != 2) {
             return "Error: CollectionUtils.range(dst,1,3)";
         }
         return null;
     }
 
     private static String TestCountMap() {
-
         CountMapIml<String> src = new CountMapIml<>();
         CountMapIml<String> trg = new CountMapIml<>();
         Map<String, Integer> mapTrg = new HashMap<>();
